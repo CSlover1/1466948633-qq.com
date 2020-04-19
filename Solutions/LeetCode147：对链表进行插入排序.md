@@ -54,9 +54,10 @@ struct ListNode* insertionSortList(struct ListNode* head) {
 						index = index->next;
 				}
 			}
-			//便于最后一次跳出循环，否则程序无法结束
 			else head = head->next;
 		}
+		//便于最后一次跳出循环，否则程序无法结束
+		else break;
 	}
 	return result->next;
 }
@@ -66,7 +67,7 @@ struct ListNode* insertionSortList(struct ListNode* head) {
  1. 对于数组的插入排序而言，是从目标元素前进行遍历，但单链表只能从前往后查找节点，所以index指针的目的在于确立开始遍历的节点；
  
  2. ` first = first -> next`的写入时机要注意，调整元素顺序时不用等于next，因为孤立second的时候first的下一个节点元素的值已经改变，需要重复比较的步骤；
- 3. 由于` first = first -> next`的写入处理，当first指向尾节点时，程序会一直循环下去，所以加上`else head = head->next`。
+ 3. 由于` first = first -> next`的写入处理，当first指向尾节点时，程序会一直循环下去，所以加上`else break`。
 ### （2）复杂度分析
  1. 时间复杂度：O（n^2） 
  2. 空间复杂度：O（1）
